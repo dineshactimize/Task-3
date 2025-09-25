@@ -9,7 +9,8 @@
 <body class="container">
     <h1 class="text-center">Form Validation</h1>
     <form id="customForm" class="row g-3 needs-validation"  novalidate autocomplete="off" style=" background-color: antiquewhite; margin-top:20px; padding:20px; border:1px solid black; border-radius:10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" >
-
+      
+      <!-- Name -->
       <div class="col-md-6">
         <label for="yourName" class="form-label">Your Name</label>
         <input type="text" class="form-control" id="yourName" name="yourName" required  placeholder="Enter your name">
@@ -17,25 +18,27 @@
       </div>
 
 
-        
+        <!-- Email -->
       <div class="col-md-6">
         <label for="email" class="form-label">Email</label>
         <input type="text" class="form-control" id="email" name="email" required placeholder="Enter your email">
         <div class="invalid-feedback" class="text-danger">Please enter a valid email</div>
       </div>
 
+      <!-- password -->
       <div class="col-md-6">
         <label for="password" class="form-label">Password</label>
         <input type="password" class="form-control" id="password" name="password" required placeholder="Enter password">
         <div class="invalid-feedback" id="passwordError"  class="text-danger">Please enter your password</div>
       </div>
-
+      <!-- re-password -->
       <div class="col-md-6">
         <label for="repassword" class="form-label">Re-enter Password</label>
         <input type="password" class="form-control" id="repassword" name="repassword" required placeholder="Re-enter password">
         <div class="invalid-feedback" id="repasswordError"  class="text-danger">Passwords do not match</div>
       </div>
       
+      <!-- gender -->
       <div class="col-md-6 d-flex align-items-center">
         <label class="form-label me-3 mb-0">Gender</label>
           <div class="form-check form-check-inline">
@@ -52,7 +55,7 @@
 
 
 
-
+      <!-- DOB -->
       <div class="col-md-6">
         <label for="dob" class="form-label">Date of Birth</label>
         <input type="date" class="form-control" id="dob" name="dob" required placeholder="mm/dd/yyyy">
@@ -61,7 +64,7 @@
 
 
 
-
+      <!-- Mobile -->
       <div class="col-md-6">
         <label for="mobile" class="form-label">Mobile</label>
         <input type="text" class="form-control" id="mobile" name="mobile" required  placeholder="Enter 10 digit mobile number">
@@ -71,7 +74,7 @@
 
 
 
-
+      <!-- Address -->
       <div class="col-md-6">
         <label for="address" class="form-label">Address</label>
         <textarea class="form-control" id="address" name="address" rows="2" required placeholder="Enter your address"></textarea>
@@ -80,7 +83,7 @@
 
 
 
-
+      <!-- City -->
       <div class="col-md-4">
         <label for="city" class="form-label">City</label>
         <select class="form-select" id="city" name="city" required>
@@ -95,7 +98,7 @@
       </div>
 
 
-
+      <!-- Country -->
       <div class="col-md-4">
         <label for="country" class="form-label">Country</label>
         <input type="text" class="form-control" id="country" name="country" required placeholder="Enter your country">
@@ -104,7 +107,7 @@
 
 
 
-
+      <!-- Expertise -->
       <div class="col-md-4" text-dark>
         <label class="form-label">Expertise</label>
         <div class="border rounded p-2" style="max-height: 90px; overflow-y: auto;">
@@ -134,7 +137,7 @@
 
 
 
-
+      <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -155,19 +158,23 @@
 
 
  
-
+           <!-- Button -->
       <div class="col-12 d-grid justify-content-center">
         <button class="btn btn-dark "  type="submit">   Save    </button>
       </div>
     </form>
 
 
-    
+
+        <!-- script part starts here -->
     <script>
 
     document.getElementById('customForm').addEventListener('submit', function(event) {
       let form = this;
       let valid = true;
+
+      
+      // Name validation starts here
       let nameInput = form.yourName;
       let nameError = document.getElementById('nameError');
       if (!nameInput.value.trim()) {
@@ -200,9 +207,11 @@
         nameInput.classList.add('is-valid');
         nameError.textContent = '';
       }
+      // Name validation ends here
 
 
 
+      // Email validation starts here
       let emailInput = form.email;
       let emailValue = emailInput.value.trim();
         let emailPattern = /^[^\s@]+@[a-zA-Z]+\.(com|in)$/;
@@ -214,9 +223,10 @@
           emailInput.classList.remove('is-invalid');
           emailInput.classList.add('is-valid');
         }
+      // Email validation ends here
 
 
-
+          // Gender validation starts here
       let genderChecked = form.querySelector('input[name="gender"]:checked');
       let genderError = document.getElementById('genderError');
       if (!genderChecked) {
@@ -225,9 +235,11 @@
       } else {
         genderError.style.display = 'none';
       }
+        // Gender validation ends here
 
        
 
+      // DOB validation starts here
       let dobInput = form.dob;
       let date =new Date(dobInput.value);
       // let today =new Date();
@@ -249,9 +261,10 @@
         dobInput.classList.add('is-valid');
         dobError.textContent = '';
       } 
-      // console.log(typeof(date.getFullYear()));
+      // DOB validation ends here
 
 
+      // expertide validation starts here
       let expertiseChecked = form.querySelectorAll('input[name="expertise"]:checked');
       let expertiseError = document.getElementById('expertiseError');
       if (expertiseChecked.length === 0) {
@@ -260,8 +273,11 @@
       } else {
         expertiseError.style.display = 'none';
       }
+      // expertise validation ends here
 
 
+
+      // Mobile validation starts here
       let mobileInput = form.mobile;
       let mobileError = document.querySelector('#mobile + .invalid-feedback');    
       let mobilePattern = /^[0-9]{10}$/;
@@ -286,9 +302,11 @@
         mobileInput.classList.add('is-valid');
         mobileError.textContent = '';
       }
+      // Mobile validation ends here
 
 
 
+      // Password validation starts here
       let passwordInput = form.password;
       let repasswordInput = form.repassword;
       let passwordError = document.getElementById('passwordError');
@@ -298,11 +316,6 @@
         passwordError.textContent = 'Please enter your password';
         valid = false;
       }
-      // else if(passwordInput.value.charAt(0) !== passwordInput.value.charAt(0).toUpperCase()){
-      //   passwordInput.classList.add('is-invalid');
-      //   passwordError.textContent = 'Password must start with a capital letter';
-      //   valid = false;
-      // }
       else if(passwordInput.value.length < 6 ){
         passwordInput.classList.add('is-invalid');
         passwordError.textContent = 'Password must be at least 6 characters long';
@@ -343,6 +356,7 @@
         repasswordInput.classList.add('is-valid');
         repasswordError.textContent = '';
       }
+      // Password validation ends here
 
 
       
